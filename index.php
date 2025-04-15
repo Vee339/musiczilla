@@ -12,59 +12,48 @@ include( 'admin/includes/functions.php' );
   <meta charset="UTF-8">
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
   
-  <title>Website Admin</title>
-  
-  <link href="styles.css" type="text/css" rel="stylesheet">
+  <title>Music Zilla</title>
+  <link href="front-page-styles.css" type="text/css" rel="stylesheet">
+  <link href="background.css" type="text/css" rel="stylesheet">
   
   <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
   
 </head>
 <body>
+<?php
+  
+  for($i = 0; $i < 15; $i++ ){
 
-  <h1>Welcome to My Website!</h1>
-  <p>This is the website frontend!</p>
-
-  <?php
-
-  $query = 'SELECT *
-    FROM projects
-    ORDER BY date DESC';
-  $result = mysqli_query( $connect, $query );
-
-  ?>
-
-  <p>There are <?php echo mysqli_num_rows($result); ?> projects in the database!</p>
-
-  <hr>
-
-  <?php while($record = mysqli_fetch_assoc($result)): ?>
-
-    <div>
-
-      <h2><?php echo $record['title']; ?></h2>
-      <?php echo $record['content']; ?>
-
-      <?php if($record['photo']): ?>
-
-        <p>The image can be inserted using a base64 image:</p>
-
-        <img src="<?php echo $record['photo']; ?>">
-
-        <p>Or by streaming the image through the image.php file:</p>
-
-        <img src="admin/image.php?type=project&id=<?php echo $record['id']; ?>&width=100&height=100">
-
-      <?php else: ?>
-
-        <p>This record does not have an image!</p>
-
-      <?php endif; ?>
-
-    </div>
-
-    <hr>
-
-  <?php endwhile; ?>
-
+?>
+  <div class="firefly"></div>
+<?php
+  }
+?>
+<header>
+  <h1>Music Zilla</h1>
+  <nav>
+    <ul>
+      <li><a href="#">Songs</a></li>
+      <li><a href="#">Artists</a></li>
+      <li><a href="#">Albums</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section class="songs">
+    <a class="card song" href="#" target="_blank">
+      <p class="genre">Hip Hop</p>
+       <div class="meta-info">
+          <h2>No Lie</h2>
+          <p class="artist">Dua Lipa</p>
+          <p class="album">Midnight</p>
+       </div>
+       <div class="info">
+         <p class="releaseDate">Date released: 2023-05-11</p>
+         <p class="views">Views: 24645234</p>
+       </div>
+    </a>
+  </section>
+</main>
 </body>
 </html>

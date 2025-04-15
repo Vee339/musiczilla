@@ -23,48 +23,40 @@ if( isset( $_GET['delete'] ) )
 
 include( 'includes/header.php' );
 
-$query = 'SELECT *
-  FROM songs
-  ORDER BY name DESC';
+$query = 'SELECT s.id, s.title, ar.name AS artist_name, al.name AS album_name, s.date_of_release, s.views, s.youtube_id, s.genre
+  FROM songs s INNER JOIN artists ar ON s.artist_id = ar.id INNER JOIN albums al ON s.album_id = al.id
+  ORDER BY date_of_release';
 $result = mysqli_query( $connect, $query );
 
 ?>
 
-<h2>Manage Songs</h2>
+<section class="sub-header">
+    <h2>Manage Songs</h2>
+    <button class="btn"><a href="songs_add.php">Add New</a></button>
+</section>
 
-<table>
-  <tr>
-    <th></th>
-    <th align="center">ID</th>
-    <th align="left">Name</th>
-    <th align="center">url</th>
-    <th align="center">genre</th>
-    <th></th>
-  </tr>
-  <?php while( $record = mysqli_fetch_assoc( $result ) ): ?>
-    <tr>
-      <td align="center">
-        <img src="image.php?type=skill&id=<?php echo $record['id']; ?>&width=150&height=150&format=inside">
-      </td>
-      <td align="center"><?php echo $record['id']; ?></td>
-      <td align="left">
-        <?php echo htmlentities( $record['name'] ); ?>
-        <br>
-        <small><?php echo $record['url']; ?></small>
-      </td>
-      <td align="center"><?php echo $record['genre']; ?></td>
-      <td align="center"><a href="songs_photo.php?id=<?php echo $record['id']; ?>">Photo</i></a></td>
-      <td align="center"><a href="songs_edit.php?id=<?php echo $record['id']; ?>">Edit</i></a></td>
-      <td align="center">
-        <a href="songs.php?delete=<?php echo $record['id']; ?>" onclick="javascript:confirm('Are you sure you want to delete this song?');">Delete</i></a>
-      </td>
-    </tr>
+<div class="entity songs">
+  <?php 
+
+  while( $record = mysqli_fetch_assoc($result)):
+
+  ?>
+
+  <div class="record song">
+      <div class="item songName"><?php echo $record['title'];?></div>
+      <div class="item artistName"><?php echo $record['artist_name'];?></div>
+      <div class="item albumName"><?php echo $record['album_name']; ?></div>
+      <div class="item releaseDate"><?php echo $record['date_of_release']; ?></div>
+      <button class="btn item edit">
+          <a href="songs_edit.php?id=<?php echo $record['id']; ?>">Edit</a>
+      </button>
+      <button class="btn item delete">
+          <a href="songs.php?delete=<?php echo $record['id']; ?>">Delete</a>
+      </button>
+  </div>
+
   <?php endwhile; ?>
-</table>
-
-<p><a href="songs_add.php"><i class="fas fa-plus-square"></i> Add Song</a></p>
-
-
+</div>
 <?php
 
 include( 'includes/footer.php' );

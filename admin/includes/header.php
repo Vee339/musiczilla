@@ -14,18 +14,20 @@
 </head>
 <body>
   
+  <header>
   <h1>Website Admin</h1>
   
   <?php if(isset($_SESSION['id'])): ?>
 
-    <p style="padding: 0 1%; text-align: center;">
-      <a href="dashboard.php">Dashboard</a> | 
-      <a href="logout.php">Logout</a>
-    </p>
+    <ul>
+      <li><a href="dashboard.php">Dashboard</a></li>
+      <li><a href="logout.php">Logout</a></li>
+    </ul>
   
   <?php endif; ?>
   
-  <hr>
+  </header>
+
   
   <?php echo get_message(); ?>
   

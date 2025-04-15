@@ -17,6 +17,16 @@ include( 'includes/header.php' );
     </a>
   </li>
   <li>
+    <a href="artists.php">
+      Manage Artists
+    </a>
+  </li>
+  <li>
+    <a href="albums.php">
+      Manage Albums
+    </a>
+  </li>
+  <li>
     <a href="projects.php">
       Manage Projects
     </a>

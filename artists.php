@@ -5,9 +5,7 @@ include( 'admin/includes/config.php' );
 include( 'admin/includes/functions.php' );
 
 
-$query = 'SELECT s.id, s.title, ar.name AS artist_name, al.name AS album_name, s.date_of_release, s.views, s.youtube_id, s.genre
-  FROM songs s INNER JOIN artists ar ON s.artist_id = ar.id INNER JOIN albums al ON s.album_id = al.id
-  ORDER BY date_of_release';
+$query = 'SELECT * FROM artists ORDER BY monthly_listeners DESC';
 $result = mysqli_query( $connect, $query );
 
 ?>
@@ -46,22 +44,19 @@ $result = mysqli_query( $connect, $query );
   </nav>
 </header>
 <main>
-  <section class="cards songs">
+  <section class="cards artists">
   <?php 
       while( $record = mysqli_fetch_assoc($result)):
   ?>
-    <a class="card song" href="https://youtube.com/watch?v=<?php echo $record['youtube_id']; ?>" target="_blank">
-      <p class="genre"><?php echo $record['genre']; ?></p>
-       <div class="meta-info">
-          <h2><?php echo $record['title']; ?></h2>
-          <p class="artist"><?php echo $record['artist_name'];?></p>
-          <p class="album"><?php echo $record['album_name']; ?></p>
-       </div>
-       <div class="info">
-         <p class="releaseDate">Date released: <?php echo $record['date_of_release']; ?></p>
-         <p class="views">Views: <?php echo $record['views']; ?></p>
-       </div>
-    </a>
+    <div class="card artist">
+      <div class="imgBox">
+          <img src="./public/artists/<?php echo $record["photo"]; ?>" alt="">
+      </div>
+      <div class="info">
+        <h2><?php echo $record["name"]; ?></h2>
+        <p>Monthly Listeners: <?php echo $record["monthly_listeners"]; ?></p>
+      </div>
+    </div>
   <?php endwhile; ?>
   </section>
 </main>

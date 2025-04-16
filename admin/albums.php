@@ -42,7 +42,6 @@ $result = mysqli_query($connect, $query);
     <div class="record album">
       <div class="item albumName"><?php echo $record['album_name'];?></div>
       <div class="item artistName"><?php echo $record['artist_name'];?></div>
-      <div class="item photo"><?php echo $record['photo']; ?></div>
       <div class="item releaseDate"><?php echo $record['date_of_release']; ?></div>
       <button class="btn item edit">
           <a href="albums_edit.php?id=<?php echo $record['id']; ?>">Edit</a>

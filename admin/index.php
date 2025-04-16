@@ -42,26 +42,20 @@ if( isset( $_POST['email'] ) )
 include( 'includes/header.php' );
 
 ?>
-
-<div style="max-width: 400px; margin:auto">
-
-  <form method="post">
-
-    <label for="email">Email:</label>
-    <input type="text" name="email" id="email">
-
-    <br>
-
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password">
-
-    <br>
-
-    <input type="submit" value="Login">
-
+  <section class="sub-header">
+      <h2>Login to the Admin Panel</h2>
+  </section>
+    <form class="login-form" method="post">
+      <div class="inputBox">
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email">
+      </div>
+      <div class="inputBox">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password">
+      </div>
+    <button type="submit" class="btn">Login</button>
   </form>
-  
-</div>
 
 <?php
 

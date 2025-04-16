@@ -214,6 +214,9 @@ h2 {
 .record.artist .item {
   width: 20%;
 }
+.record.album .item {
+  width: 20%;
+}
 .record.song .item {
   width: 16.5%;
 }

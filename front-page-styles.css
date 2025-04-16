@@ -46,6 +46,12 @@ main {
   padding: 2rem 6rem;
 }
 
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
 /* Styling of the card */
 a.card {
   display: flex;
@@ -87,4 +93,69 @@ h2 {
   align-self: flex-start;
   color: rgba(245, 245, 245, 0.463);
   font-size: 0.6rem;
+}
+.card.artist,
+.card.album {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  justify-content: flex-end;
+  color: whitesmoke;
+}
+.card.artist::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #030303;
+  background: linear-gradient(
+    180deg,
+    rgba(3, 3, 3, 0) 34%,
+    rgba(110, 30, 214, 1) 100%
+  );
+  z-index: 5;
+}
+.card.artist .imgBox,
+.card.album .imgBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.card.artist .imgBox img,
+.card.album .imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card.artist .info,
+.card.album .info {
+  z-index: 100;
+  width: 100%;
+  color: white;
+}
+h3 {
+  font-size: 1rem;
+  text-align: right;
+}
+.card.album .info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+  background: rgba(0, 0, 0, 0.845);
+}
+.card.album:hover .info {
+  opacity: 1;
 }

@@ -27,23 +27,8 @@ include( 'includes/header.php' );
     </a>
   </li>
   <li>
-    <a href="projects.php">
-      Manage Projects
-    </a>
-  </li>
-  <li>
-    <a href="skills.php">
-      Manage Skills
-    </a>
-  </li>
-  <li>
     <a href="users.php">
       Manage Users
-    </a>
-  </li>
-  <li>
-    <a href="logout.php">
-      Logout
     </a>
   </li>
 </ul>

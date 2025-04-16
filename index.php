@@ -21,7 +21,8 @@ $result = mysqli_query( $connect, $query );
   <title>Music Zilla</title>
   <link href="front-page-styles.css" type="text/css" rel="stylesheet">
   <link href="background.css" type="text/css" rel="stylesheet">
-  
+  <link rel="icon" type="image/x-icon" href="./public/music_icon.ico">
+
   <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
   
 </head>
